@@ -47,6 +47,12 @@ REQUIREMENTS:
    - A format guide for writing markmap documents
    - This bootstrap guide for others to replicate the system
 
+6. Create CLAUDE.md at the root level:
+   - AI assistant context file (like a dotfile)
+   - Contains preferences, conventions, and session notes
+   - Not linked from views - for AI reference only
+   - Should be updated as patterns emerge
+
 Please create the initial structure with placeholder content that
 demonstrates the organizational pattern. I'll customize it from there.
 ```
@@ -83,12 +89,14 @@ mkdir -p views documents/meta
 - documents/meta/README.md: System overview
 - documents/meta/markmap-format-guide.md: Formatting guidelines
 - documents/meta/bootstrap-guide.md: This file
+- CLAUDE.md: AI assistant context and preferences (at root level)
 
 ### Step 5: Verify Structure
 - Your directory should look like:
 ```
 /
 ├── index.md
+├── CLAUDE.md
 ├── views/
 │   └── by-topic.md
 └── documents/
@@ -132,6 +140,7 @@ mkdir -p views documents/meta
 - Prune outdated content or move to archive
 - Keep view files focused - split large views into smaller ones
 - Update meta documentation as you evolve the system
+- Update CLAUDE.md when establishing new patterns or preferences
 
 ### Viewing Markmaps
 - **VS Code**: Install markmap extension

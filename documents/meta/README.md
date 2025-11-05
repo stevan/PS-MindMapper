@@ -16,6 +16,7 @@
 ```
 /
 ├── index.md              # Table of contents
+├── CLAUDE.md             # AI assistant context (unlinked)
 ├── views/                # Organizational perspectives
 │   └── by-topic.md
 └── documents/            # Actual content
@@ -38,6 +39,13 @@
 - Create your document in the appropriate `documents/` subdirectory,
   then add links to it in relevant views. The same document can be
   referenced from multiple views.
+
+### AI Assistant Context
+- `CLAUDE.md` at the root stores preferences and conventions for AI
+  assistants working with the knowledge base. It acts like a dotfile,
+  containing formatting guidelines, established patterns, and session
+  notes. Not linked from views - it's reference material for AI, not
+  navigable content for users.
 
 ## Benefits
 ### Key Advantages
