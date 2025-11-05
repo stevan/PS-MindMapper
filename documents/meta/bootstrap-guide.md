@@ -1,11 +1,11 @@
 # Knowledge Base Bootstrap Guide
 
-## Overview
+## Overview <!-- markmap: fold -->
 - This guide helps you create your own markmap-based knowledge base
   system. You can either follow the manual steps below or use the
   setup prompt with any AI assistant to automate the process.
 
-## Quick Start with AI
+## Quick Start with AI <!-- markmap: fold -->
 ### Using the Setup Prompt
 - Copy the setup prompt section below (everything in the code block)
 - Paste it into any AI chatbot (Claude, ChatGPT, etc.)
@@ -57,7 +57,7 @@ Please create the initial structure with placeholder content that
 demonstrates the organizational pattern. I'll customize it from there.
 ```
 
-## Manual Setup Steps
+## Manual Setup Steps <!-- markmap: fold -->
 ### Step 1: Create Directory Structure
 ```bash
 mkdir -p views documents/meta
@@ -106,7 +106,7 @@ mkdir -p views documents/meta
         └── bootstrap-guide.md
 ```
 
-## Customization Ideas
+## Customization Ideas <!-- markmap: fold -->
 ### Additional Views
 - **By Project**: Group documents by active projects
 - **By Priority**: Organize by urgency or importance
@@ -128,7 +128,7 @@ mkdir -p views documents/meta
 - **Inbox**: Create documents/inbox/ for unsorted items
 - **Version control**: Initialize git repository for history
 
-## Best Practices
+## Best Practices <!-- markmap: fold -->
 ### Getting Started
 - Start simple with one view and a few documents
 - Add complexity as you understand your needs
@@ -148,7 +148,7 @@ mkdir -p views documents/meta
 - **Online**: Visit markmap.js.org and paste markdown
 - **Browser**: Generate HTML files for offline viewing
 
-## Troubleshooting
+## Troubleshooting <!-- markmap: fold -->
 ### Markmap Not Rendering
 - Check markdown syntax (heading levels, lists)
 - Ensure file is valid markdown
@@ -165,7 +165,7 @@ mkdir -p views documents/meta
 - Split large documents into smaller focused ones
 - Convert excessive bullets to prose paragraphs
 
-## Next Steps
+## Next Steps <!-- markmap: fold -->
 - Customize the initial structure to your needs
 - Start adding your own documents
 - Create additional views for different perspectives

@@ -2,6 +2,7 @@
 
 ## Views
 - [By Topic](views/by-topic.md)
+- [By Project](views/by-project.md)
 
 ## About
 - [System Overview](documents/meta/README.md)

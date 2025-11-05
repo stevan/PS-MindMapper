@@ -11,5 +11,7 @@
 ## Research
 
 ## Projects
+### Voice & Audio
+- [Voice Notes Integration](../documents/projects/voice-notes/README.md) - Audio recording and transcription workflow
 
 ## Reference

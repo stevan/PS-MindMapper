@@ -55,9 +55,11 @@ This is a markmap-based knowledge base system that separates content (documents)
 ├── index.md              # Main entry point
 ├── CLAUDE.md            # This file (AI context)
 ├── views/               # Organizational perspectives
-│   └── by-topic.md
+│   ├── by-topic.md
+│   └── by-project.md
 └── documents/           # Actual content
-    └── meta/            # System documentation
+    ├── meta/            # System documentation
+    └── projects/        # Project documentation
 ```
 
 ### Creating New Documents
@@ -109,6 +111,23 @@ This is a markmap-based knowledge base system that separates content (documents)
 - Established documents/meta/ with README.md, markmap-format-guide.md, bootstrap-guide.md
 - Defined markmap formatting conventions (3-level hierarchy, 80-column prose bullets)
 - Created this CLAUDE.md file for AI session context
+
+### 2025-11-05: By Project View & Voice Notes
+- Created views/by-project.md as second organizational perspective
+- Created documents/projects/ directory structure
+- Documented first project: Voice Notes Integration
+  - Audio recording with sox + local transcription with whisper.cpp
+  - Token-efficient approach: transcribe locally, AI reads only text
+  - Stores both WAV audio and text transcript
+- Updated both by-topic and by-project views with cross-references
+- Project documentation serves as template for future projects
+
+### 2025-11-05: Fold Comments Best Practice
+- Established convention: add `<!-- markmap: fold -->` to all ## level headings in large documents
+- Syntax: fold comment must be on same line as heading
+- Applied to all existing documents: voice-notes README, meta docs (README, format guide, bootstrap guide)
+- Updated markmap-format-guide.md to document this best practice
+- Rationale: reduces visual clutter, keeps initial markmap view scannable
 
 ---
 

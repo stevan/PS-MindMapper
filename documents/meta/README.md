@@ -1,11 +1,11 @@
 # Knowledge Base System
 
-## Purpose
+## Purpose <!-- markmap: fold -->
 - A single place to collect ideas and documents while providing
   multiple views for organization and navigation. The system
   separates content storage from organizational structure.
 
-## Core Concept
+## Core Concept <!-- markmap: fold -->
 ### Content vs Organization
 - Documents live in `documents/` organized by general categories.
   Views live in `views/` as markmap files that provide different
@@ -23,7 +23,7 @@
     └── meta/
 ```
 
-## How It Works
+## How It Works <!-- markmap: fold -->
 ### Markmap Navigation
 - Markdown headings create hierarchical structures, links point
   to documents or other views, and the whole structure visualizes
@@ -47,7 +47,7 @@
   notes. Not linked from views - it's reference material for AI, not
   navigable content for users.
 
-## Benefits
+## Benefits <!-- markmap: fold -->
 ### Key Advantages
 - **Flexible**: Add new views without reorganizing files
 - **Visual**: Markmap provides intuitive tree visualization
@@ -55,13 +55,13 @@
 - **Simple**: Plain markdown files, no database required
 - **Portable**: Git-friendly, no proprietary formats
 
-## Future Expansion
+## Future Expansion <!-- markmap: fold -->
 - As the knowledge base grows, you can add new view perspectives,
   create subdirectories in `documents/`, add tags or metadata
   within documents, and link between documents to create a
   knowledge graph.
 
-## Documentation
+## Documentation <!-- markmap: fold -->
 ### Guides
 - [Markmap Format Guide](markmap-format-guide.md) - Best practices for writing markmap documents
 - [Bootstrap Guide](bootstrap-guide.md) - Setup instructions and prompt for creating your own knowledge base

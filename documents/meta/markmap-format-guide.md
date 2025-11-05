@@ -1,12 +1,12 @@
 # Markmap Format Guide
 
-## Overview
+## Overview <!-- markmap: fold -->
 - This guide describes best practices for creating markmap documents
   in the knowledge base. Markmap converts markdown into interactive
   mind maps, making hierarchical information easy to navigate and
   visualize.
 
-## When to Use Markmap
+## When to Use Markmap <!-- markmap: fold -->
 ### Good Use Cases
 - **Views**: All organizational views should be markmap format
 - **Hierarchical content**: Information naturally organized in trees
@@ -19,7 +19,7 @@
 - **Code-heavy content**: When prose and code blocks dominate
 - Note: Any document can be converted to markmap if beneficial
 
-## Hierarchy Guidelines
+## Hierarchy Guidelines <!-- markmap: fold -->
 ### The 3-Level Rule
 - **Ideal depth**: Aim for 3 levels of headings (H1, H2, H3)
 - **Level 1**: Document title (`#`)
@@ -33,11 +33,13 @@
 - **Balance**: More levels = more structure but also more visual noise
 
 ### Folding Deep Hierarchies
-- Add `<!-- markmap: fold -->` after a heading to collapse it
-- Add `<!-- markmap: foldAll -->` to collapse all children
-- Helps manage visual complexity in deep trees
+- **Syntax**: Add fold comment on same line as heading: `## Section <!-- markmap: fold -->`
+- **Large documents**: Add fold to all `##` level headings by default
+- **Deep sections**: Use `<!-- markmap: fold -->` for deep nested content
+- **Collapse all**: Use `<!-- markmap: foldAll -->` to collapse all children
+- **Why**: Helps manage visual complexity, keeps initial view scannable
 
-## Formatting Prose
+## Formatting Prose <!-- markmap: fold -->
 ### The Bullet Paragraph Technique
 - **Problem**: Markmap doesn't render regular paragraphs
 - **Solution**: Use single bullet points with manual line breaks
@@ -57,7 +59,7 @@
 - Use for structure diagrams, examples, or technical details
 - They provide visual breaks without adding hierarchy depth
 
-## Markdown Features
+## Markdown Features <!-- markmap: fold -->
 ### Supported Elements
 - **Inline formatting**: Bold, italic, code, links all work
 - **Lists**: Both bulleted and numbered lists
@@ -71,7 +73,7 @@
 - **Link liberally**: Connect related documents and views
 - **Avoid clutter**: Too many emojis or formatting reduces clarity
 
-## Document Structure Template
+## Document Structure Template <!-- markmap: fold -->
 ```markdown
 # Document Title
 
@@ -95,7 +97,7 @@
 - [External Resource](https://example.com)
 ```
 
-## Tips and Tricks
+## Tips and Tricks <!-- markmap: fold -->
 ### Visual Balance
 - **Too shallow**: Loses structure, everything feels flat
 - **Too deep**: Visual noise, hard to scan
