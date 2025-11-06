@@ -15,7 +15,8 @@ import {
     generateMarkmapPage,
     generateMarkdownPage,
     generateMixedPage,
-    generateSidebarHtml
+    generateSidebarHtml,
+    generateSidebarHeader
 } from './lib/renderer.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -86,6 +87,7 @@ app.get('/', async (req, res) => {
     try {
         await updateFileCache();
 
+        const sidebarHeaderHtml = generateSidebarHeader();
         const sidebarHtml = generateSidebarHtml(fileCache.tree);
 
         const html = `<!DOCTYPE html>
@@ -99,9 +101,7 @@ app.get('/', async (req, res) => {
 <body>
     <div class="app-container">
         <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1>Markmap Viewer</h1>
-            </div>
+            ${sidebarHeaderHtml}
             <nav class="file-tree">
                 ${sidebarHtml}
             </nav>
@@ -123,6 +123,8 @@ app.get('/', async (req, res) => {
             </div>
         </main>
     </div>
+    <script src="/js/theme.js"></script>
+    <script src="/js/sidebar.js"></script>
 </body>
 </html>`;
 
@@ -176,8 +178,10 @@ app.get('/view/:path(*)', async (req, res) => {
             html = generateMarkdownPage(filePath, title, htmlContent);
         }
 
-        // Inject sidebar
+        // Inject sidebar header and content
+        const sidebarHeaderHtml = generateSidebarHeader();
         const sidebarHtml = generateSidebarHtml(fileCache.tree, filePath);
+        html = html.replace('<!-- Sidebar header populated by server -->', sidebarHeaderHtml);
         html = html.replace('<!-- Populated by server -->', sidebarHtml);
 
         res.send(html);

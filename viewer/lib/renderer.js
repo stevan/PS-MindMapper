@@ -58,9 +58,7 @@ export function generateMarkmapPage(filePath, title, markmapData) {
 <body>
     <div class="app-container">
         <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1><a href="/">Markmap Viewer</a></h1>
-            </div>
+            <!-- Sidebar header populated by server -->
             <nav class="file-tree" id="file-tree">
                 <!-- Populated by server -->
             </nav>
@@ -87,6 +85,8 @@ export function generateMarkmapPage(filePath, title, markmapData) {
 
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/sidebar.js"></script>
     <script>
         const markmapData = ${dataJson};
         const { Markmap } = window.markmap;
@@ -147,9 +147,7 @@ export function generateMarkdownPage(filePath, title, htmlContent) {
 <body>
     <div class="app-container">
         <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1><a href="/">Markmap Viewer</a></h1>
-            </div>
+            <!-- Sidebar header populated by server -->
             <nav class="file-tree" id="file-tree">
                 <!-- Populated by server -->
             </nav>
@@ -170,6 +168,8 @@ export function generateMarkdownPage(filePath, title, htmlContent) {
             </div>
         </main>
     </div>
+    <script src="/js/theme.js"></script>
+    <script src="/js/sidebar.js"></script>
 </body>
 </html>`;
 }
@@ -302,9 +302,7 @@ export function generateMixedPage(filePath, title, blocks) {
 <body>
     <div class="app-container">
         <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1><a href="/">Markmap Viewer</a></h1>
-            </div>
+            <!-- Sidebar header populated by server -->
             <nav class="file-tree" id="file-tree">
                 <!-- Populated by server -->
             </nav>
@@ -329,6 +327,8 @@ export function generateMixedPage(filePath, title, blocks) {
 
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/sidebar.js"></script>
     <script>
         ${initScript}
     </script>
@@ -337,11 +337,27 @@ export function generateMixedPage(filePath, title, blocks) {
 }
 
 /**
- * Generate sidebar HTML
+ * Generate sidebar header HTML with theme toggle
+ */
+export function generateSidebarHeader() {
+    return `
+        <div class="sidebar-header">
+            <h1><a href="/">Markmap Viewer</a></h1>
+            <div class="theme-toggle" id="theme-toggle">
+                <span>Theme</span>
+                <span class="theme-toggle-icon" id="theme-icon">🌙</span>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Generate sidebar HTML with sections
  */
 export function generateSidebarHtml(fileTree, currentPath = '') {
     let html = '';
 
+    // Helper to render a single node
     const renderNode = (node, depth = 0) => {
         const isActive = node.path === currentPath ? ' active' : '';
 
@@ -365,12 +381,83 @@ export function generateSidebarHtml(fileTree, currentPath = '') {
         }
     };
 
-    Object.values(fileTree)
-        .sort((a, b) => {
+    // Separate views and projects from other files
+    const views = [];
+    const projects = [];
+    const other = [];
+
+    Object.values(fileTree).forEach(node => {
+        if (node.name === 'views' && node.type === 'directory') {
+            views.push(node);
+        } else if (node.path && node.path.startsWith('documents/projects')) {
+            projects.push(node);
+        } else if (node.name === 'documents' && node.type === 'directory' && node.children) {
+            // Extract projects from documents directory
+            Object.values(node.children).forEach(child => {
+                if (child.name === 'projects' && child.type === 'directory') {
+                    projects.push(child);
+                } else {
+                    other.push(child);
+                }
+            });
+        } else {
+            other.push(node);
+        }
+    });
+
+    // Render Views section
+    if (views.length > 0) {
+        html += `
+            <div class="sidebar-section">
+                <div class="section-header" data-section="views">
+                    <span class="section-toggle">▼</span>
+                    <span>📑 Views</span>
+                </div>
+                <div class="section-content" data-section-content="views">
+        `;
+        views.forEach(node => {
+            if (node.children) {
+                Object.values(node.children)
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .forEach(child => renderNode(child));
+            }
+        });
+        html += `
+                </div>
+            </div>
+        `;
+    }
+
+    // Render Projects section
+    if (projects.length > 0) {
+        html += `
+            <div class="sidebar-section">
+                <div class="section-header" data-section="projects">
+                    <span class="section-toggle">▼</span>
+                    <span>📂 Projects</span>
+                </div>
+                <div class="section-content" data-section-content="projects">
+        `;
+        projects.forEach(node => {
+            if (node.children) {
+                Object.values(node.children)
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .forEach(child => renderNode(child));
+            }
+        });
+        html += `
+                </div>
+            </div>
+        `;
+    }
+
+    // Render other files/directories
+    if (other.length > 0) {
+        other.sort((a, b) => {
             if (a.type !== b.type) return a.type === 'directory' ? -1 : 1;
             return a.name.localeCompare(b.name);
-        })
-        .forEach(node => renderNode(node));
+        }).forEach(node => renderNode(node));
+    }
 
     return html;
 }
