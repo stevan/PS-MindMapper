@@ -9,6 +9,9 @@
 ## Ideas
 <!-- Add your conceptual ideas and future explorations here -->
 
+### Example: Voice & Audio
+- [Voice Notes Integration](../documents/projects/voice-notes/README.md) - Audio recording and transcription workflow (example project)
+
 ## Research
 <!-- Add research notes and investigations here -->
 

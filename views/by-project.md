@@ -3,10 +3,9 @@
 ## Active Projects
 <!-- List your currently active projects here -->
 
-<!-- Example:
-### Project Name
-- [Project Overview](../documents/projects/project-name/README.md) - Brief description of what this project does
--->
+<!-- Example project (you can delete this and add your own): -->
+### Voice Notes Integration
+- [Project Overview](../documents/projects/voice-notes/README.md) - Audio recording and transcription workflow using sox and whisper.cpp
 
 ## Completed Projects
 <!-- Archive completed projects here -->
