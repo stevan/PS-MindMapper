@@ -160,7 +160,12 @@ This is a markmap-based knowledge base system that separates content (documents)
   - Updated by-topic.md and by-project.md to be template-like
   - Added placeholder examples showing organizational patterns
   - Removed doc-specific content (voice-notes project)
-- **Tested integration**: Viewer starts successfully on port 3000
+- **Fixed viewer issues**
+  - Fixed static file serving: Changed to absolute path (path.join(__dirname, 'public'))
+  - Fixed CSS MIME type error: Now serves with correct text/css type
+  - Fixed file discovery: Added exclusion list for node_modules, .git, .claude, viewer, build dirs
+  - Result: Viewer now indexes only knowledge base content (8 files vs 287)
+- **Tested integration**: Viewer starts successfully on port 3000, finds correct files
 - **Result**: Skeleton is now a complete, self-contained knowledge base template
 
 ---
