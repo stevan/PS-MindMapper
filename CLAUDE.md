@@ -164,14 +164,21 @@ This is a markmap-based knowledge base system that separates content (documents)
   - Fixed static file serving: Changed to absolute path (path.join(__dirname, 'public'))
   - Fixed CSS MIME type error: Now serves with correct text/css type
   - Fixed file discovery: Added exclusion list for node_modules, .git, .claude, viewer, build dirs
-  - Result: Viewer now indexes only knowledge base content (8 files vs 287)
+  - Improved file cache: 60-second cache timeout, only log on initial load
+  - Result: Viewer now indexes only knowledge base content (9 files vs 287)
 - **Added view toggle button**
   - Toggle button in header to switch between markdown and markmap views
   - Overrides YAML frontmatter via `?view=markdown` or `?view=markmap` query parameter
   - Styled with primary color to stand out
   - Works on all view types (pure markmap, pure markdown, mixed content)
+- **Added example project**
+  - Voice-notes project from doc branch as working example
+  - Shows how to structure project documentation
+  - Demonstrates markmap format in practice
+  - Provides immediate content for users to view
+  - Marked as "(example project)" so users know it's deletable
 - **Tested integration**: Viewer starts successfully on port 3000, finds correct files
-- **Result**: Skeleton is now a complete, self-contained knowledge base template
+- **Result**: Skeleton is now a complete, self-contained knowledge base template with working example
 
 ---
 
