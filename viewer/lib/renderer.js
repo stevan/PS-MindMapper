@@ -70,6 +70,7 @@ export function generateMarkmapPage(filePath, title, markmapData) {
             <div class="content-header">
                 <div class="breadcrumb">${filePath}</div>
                 <div class="controls">
+                    <button id="view-toggle" class="view-toggle" onclick="window.location.href='?view=markdown'">📝 Markdown View</button>
                     <button id="expand-all">Expand All</button>
                     <button id="collapse-all">Collapse All</button>
                     <button id="fit-view">Fit View</button>
@@ -157,6 +158,9 @@ export function generateMarkdownPage(filePath, title, htmlContent) {
         <main class="content">
             <div class="content-header">
                 <div class="breadcrumb">${filePath}</div>
+                <div class="controls">
+                    <button id="view-toggle" class="view-toggle" onclick="window.location.href='?view=markmap'">🗺️ Markmap View</button>
+                </div>
             </div>
 
             <div class="content-body">
@@ -309,6 +313,10 @@ export function generateMixedPage(filePath, title, blocks) {
         <main class="content">
             <div class="content-header">
                 <div class="breadcrumb">${filePath}</div>
+                <div class="controls">
+                    <button id="view-toggle-markdown" class="view-toggle" onclick="window.location.href='?view=markdown'">📝 Markdown Only</button>
+                    <button id="view-toggle-markmap" class="view-toggle" onclick="window.location.href='?view=markmap'">🗺️ Markmap Only</button>
+                </div>
             </div>
 
             <div class="content-body">

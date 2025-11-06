@@ -141,6 +141,18 @@ body {
     background: var(--hover-color);
 }
 
+.controls button.view-toggle {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    font-weight: 500;
+}
+
+.controls button.view-toggle:hover {
+    background: #3a7bc8;
+    border-color: #3a7bc8;
+}
+
 /* Content body */
 .content-body {
     flex: 1;

@@ -141,19 +141,31 @@ app.get('/view/:path(*)', async (req, res) => {
         const fileData = await readMarkdownFile(fullPath);
         const title = fileData.frontmatter.title || path.basename(filePath, '.md');
 
+        // Check for view query parameter to override frontmatter
+        const viewOverride = req.query.view;
+        let renderType = fileData.type;
+
+        if (viewOverride === 'markmap' || viewOverride === 'markdown') {
+            renderType = viewOverride;
+        }
+
         let html;
 
-        // Determine how to render
-        if (fileData.type === 'markmap') {
+        // Determine how to render (with override support)
+        if (renderType === 'markmap') {
             // Pure markmap
             const markmapData = transformMarkmap(fileData.content);
             html = generateMarkmapPage(filePath, title, markmapData);
+        } else if (renderType === 'markdown' || !hasMarkmapBlocks(fileData.content)) {
+            // Pure markdown (forced or no markmap blocks)
+            const htmlContent = renderMarkdown(fileData.content);
+            html = generateMarkdownPage(filePath, title, htmlContent);
         } else if (hasMarkmapBlocks(fileData.content)) {
-            // Mixed content
+            // Mixed content (only if not overridden)
             const blocks = extractMarkmapBlocks(fileData.content);
             html = generateMixedPage(filePath, title, blocks);
         } else {
-            // Pure markdown
+            // Default to markdown
             const htmlContent = renderMarkdown(fileData.content);
             html = generateMarkdownPage(filePath, title, htmlContent);
         }
