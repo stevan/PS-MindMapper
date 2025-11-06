@@ -58,8 +58,10 @@ let fileCache = {
  */
 async function updateFileCache() {
     const now = Date.now();
-    // Cache for 5 seconds
-    if (now - fileCache.lastUpdate < 5000 && fileCache.files.length > 0) {
+    const isInitialLoad = fileCache.files.length === 0;
+
+    // Cache for 60 seconds (files don't change frequently)
+    if (now - fileCache.lastUpdate < 60000 && fileCache.files.length > 0) {
         return;
     }
 
@@ -67,7 +69,11 @@ async function updateFileCache() {
         fileCache.files = await findMarkdownFiles(DOCS_DIR);
         fileCache.tree = buildFileTree(fileCache.files);
         fileCache.lastUpdate = now;
-        console.log(`Found ${fileCache.files.length} markdown files`);
+
+        // Only log on initial load or when explicitly refreshed
+        if (isInitialLoad) {
+            console.log(`Found ${fileCache.files.length} markdown files`);
+        }
     } catch (error) {
         console.error('Error updating file cache:', error);
     }
