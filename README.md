@@ -1,3 +1,7 @@
+---
+type: markmap
+---
+
 # Knowledge Base Organizer
 
 A markmap-based knowledge base system that separates content from organization, allowing you to view the same documents from multiple perspectives.
