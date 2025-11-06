@@ -145,6 +145,24 @@ This is a markmap-based knowledge base system that separates content (documents)
 - Updated markmap-format-guide.md to document this best practice
 - Rationale: reduces visual clutter, keeps initial markmap view scannable
 
+### 2025-11-06: Viewer Integration & Skeleton Improvements
+- **Integrated markmap-viewer** into skeleton as built-in visualization tool
+  - Copied viewer code into `viewer/` directory (server.js, lib/, public/)
+  - Created package.json with dependencies and npm scripts (`npm run view`)
+  - Added .gitignore rules for node_modules
+  - Created viewer/README.md documenting usage and architecture
+  - Created main README.md with comprehensive Quick Start guide
+- **Enhanced CLAUDE.md conventions**
+  - Added Project Documentation template section
+  - Git commands for extracting project metadata
+  - Required metadata format for project READMEs
+- **Improved view templates**
+  - Updated by-topic.md and by-project.md to be template-like
+  - Added placeholder examples showing organizational patterns
+  - Removed doc-specific content (voice-notes project)
+- **Tested integration**: Viewer starts successfully on port 3000
+- **Result**: Skeleton is now a complete, self-contained knowledge base template
+
 ---
 
 ## Future Ideas & Experiments
