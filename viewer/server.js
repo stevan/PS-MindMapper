@@ -43,8 +43,8 @@ if (!statSync(DOCS_DIR).isDirectory()) {
     process.exit(1);
 }
 
-// Serve static files
-app.use(express.static('public'));
+// Serve static files from viewer/public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Cache for file list
 let fileCache = {
