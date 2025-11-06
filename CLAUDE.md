@@ -102,6 +102,22 @@ This is a markmap-based knowledge base system that separates content (documents)
 - Keep meta docs up to date as system evolves
 - Bootstrap guide should always be usable by others to recreate the system
 
+### Project Documentation
+- Project READMEs live in `documents/projects/<project-name>/README.md`
+- Use markmap format with fold comments on all `##` level headings
+- **Required metadata section** after Overview:
+  ```markdown
+  ## Project Metadata <!-- markmap: fold -->
+  - **Created**: YYYY-MM-DD (from first git commit)
+  - **Last Updated**: YYYY-MM-DD (from last git commit)
+  - **Total Commits**: N (from git rev-list --count HEAD)
+  - **Active Development**: duration or period
+  ```
+- Git commands for metadata:
+  - First commit: `git log --reverse --format="%ai" | head -1`
+  - Last commit: `git log -1 --format="%ai"`
+  - Commit count: `git rev-list --count HEAD`
+
 ---
 
 ## Session Notes

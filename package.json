@@ -1,0 +1,19 @@
+{
+  "name": "knowledge-base-organizer",
+  "version": "1.0.0",
+  "description": "Markmap-based knowledge base with built-in viewer",
+  "type": "module",
+  "scripts": {
+    "view": "node viewer/server.js .",
+    "view:dev": "PORT=8080 node viewer/server.js ."
+  },
+  "keywords": ["knowledge-base", "markmap", "documentation"],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.10.0",
+    "markdown-it": "^14.1.0",
+    "markmap-lib": "^0.18.12"
+  }
+}
