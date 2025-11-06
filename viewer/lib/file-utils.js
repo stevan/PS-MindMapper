@@ -8,10 +8,29 @@ import matter from 'gray-matter';
 export async function findMarkdownFiles(dir, baseDir = dir) {
     const files = [];
 
+    // Directories to exclude from search
+    const excludeDirs = new Set([
+        'node_modules',
+        '.git',
+        '.claude',
+        'viewer',
+        '.next',
+        '.nuxt',
+        'dist',
+        'build',
+        'target',
+        'coverage'
+    ]);
+
     try {
         const entries = await fs.readdir(dir, { withFileTypes: true });
 
         for (const entry of entries) {
+            // Skip excluded directories
+            if (entry.isDirectory() && excludeDirs.has(entry.name)) {
+                continue;
+            }
+
             const fullPath = path.join(dir, entry.name);
 
             if (entry.isDirectory()) {
